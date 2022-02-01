@@ -1,0 +1,97 @@
+﻿@model TaxCalculatorViewModel
+
+@{
+    ViewData["Title"] = "Tax Calculator Page";
+}
+
+<body>
+    @*Would have split these into separate partial classes*@
+    @using (Html.BeginForm("Click_Calculate", "TaxCalculator"))
+    {
+        <h2>Get Tax Rate for Location</h2>
+        <table cellpadding="5" cellspacing="2">
+            
+            <tr>
+                <td>@Html.LabelFor(m => m.TaxRate.Zip)</td>
+                <td><input type="text" asp-for="@Model.TaxRate.Zip" required maxlength="9" min="5"/></td>                
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TaxRate.Rate)</td>
+                <td>@Html.ValueFor(m => m.TaxRate.Rate)</td>
+            </tr>
+        </table>
+    
+        <h2>Calculate Order Taxes</h2>
+        <table cellpadding="5" cellspacing="2">
+            <tr>
+                <th colspan="2" align"center">From Address</th>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.FromAddress.Street)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.FromAddress.Street" readonly /></td>                
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.FromAddress.City)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.FromAddress.City" readonly /></td>                
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.FromAddress.State)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.FromAddress.State" readonly /></td>                
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.FromAddress.Zip)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.FromAddress.Zip" readonly /></td>                
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.FromAddress.Country)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.FromAddress.Country"  readonly /></td>                
+            </tr>
+            <tr>
+                <th colspan="2" align"center">To Address</th>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.ToAddress.Street)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.ToAddress.Street" readonly /></td>                
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.ToAddress.City)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.ToAddress.City" readonly /></td>                
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.ToAddress.State)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.ToAddress.State" readonly /></td>                
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.ToAddress.Zip)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.ToAddress.Zip" readonly /></td>                
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.ToAddress.Country)</td>
+                <td><input type="text" asp-for="@Model.OrderTax.ToAddress.Country" readonly /></td>                
+            </tr>
+            <tr>
+                <th colspan="2" align"center">Order Details</th>
+            <tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.OrderAmount)</td>
+                <td><span>$</span><input type="number" asp-for="@Model.OrderTax.OrderAmount" min="0.01" step="0.01" max="999999.99" /></td> 
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.ShippingCost)</td>
+                <td><span>$</span><input type="number" asp-for="@Model.OrderTax.ShippingCost" min="0.01" step="0.01" max="999999.99" /></td> 
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OrderTax.SalesTaxForOrder)</td>
+                <td><span>$</span>@Html.ValueFor(m => m.OrderTax.SalesTaxForOrder)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit"/></td>
+            </tr>
+        </table>
+    }
+</body>
+
+
+<script types="text/javascript">
+
+</script>
